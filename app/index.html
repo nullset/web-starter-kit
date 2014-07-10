@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html ng-app="app">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -59,8 +59,26 @@
       <p>Read how to <a href="http://developers.google.com/web/starter-kit">Get Started</a> or check out the <a href="styleguide/index.html">Style Guide</a>.</p>
     </main>
 
+    <div ui-view></div>
+
+    <!-- build:js scripts/vendor.min.js -->
+    <script src="bower/angular/angular.js"></script>
+    <script src="bower/angular-strap/dist/angular-strap.js"></script>
+    <script src="bower/angular-strap/dist/angular-strap.tpl.js"></script>
+    <script src="bower/angular-ui-router/release/angular-ui-router.js"></script>
+    <!-- endbuild -->
+
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js scripts/app.min.js -->
+    <script src="scripts/app.js"></script>
+    <script src="features/home/routes.js"></script>
+    <script src="features/home/home.js"></script>
+
+    <script src="features/meeting/routes.js"></script>
+    <script src="features/meeting/meeting.js"></script>
     <!-- endbuild -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
