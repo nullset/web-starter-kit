@@ -154,6 +154,8 @@ gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 // Watch Files For Changes & Reload
 gulp.task('serve', function () {
   browserSync({
+    port: 4000,
+    open: false,
     notify: false,
     server: {
       baseDir: ['.tmp', 'app']
