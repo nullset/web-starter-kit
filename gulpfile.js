@@ -28,6 +28,10 @@ var browserSync = require('browser-sync');
 var pagespeed = require('psi');
 var reload = browserSync.reload;
 
+var browserify = require('gulp-browserify');
+var concat = require('gulp-concat');
+var sourcemaps = require('gulp-sourcemaps');
+
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
   'ie_mob >= 10',
@@ -121,20 +125,20 @@ gulp.task('html', function () {
     .pipe($.useref.assets({searchPath: '{.tmp,app}'}))
     // Concatenate And Minify JavaScript
     .pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
-    // Remove Any Unused CSS
-    // Note: If not using the Style Guide, you can delete it from
-    // the next line to only include styles your project uses.
-    .pipe($.if('*.css', $.uncss({
-      html: [
-        'app/index.html',
-        'app/styleguide/index.html'
-      ],
-      // CSS Selectors for UnCSS to ignore
-      ignore: [
-        '.navdrawer-container.open',
-        /.app-bar.open/
-      ]
-    })))
+    // // Remove Any Unused CSS
+    // // Note: If not using the Style Guide, you can delete it from
+    // // the next line to only include styles your project uses.
+    // .pipe($.if('*.css', $.uncss({
+    //   html: [
+    //     'app/index.html',
+    //     'app/styleguide/index.html'
+    //   ],
+    //   // CSS Selectors for UnCSS to ignore
+    //   ignore: [
+    //     '.navdrawer-container.open',
+    //     /.app-bar.open/
+    //   ]
+    // })))
     // Concatenate And Minify Styles
     .pipe($.if('*.css', $.csso()))
     .pipe($.useref.restore())
@@ -154,6 +158,7 @@ gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 // Watch Files For Changes & Reload
 gulp.task('serve', function () {
   browserSync({
+    open: false,
     notify: false,
     server: {
       baseDir: ['.tmp', 'app']
@@ -163,7 +168,7 @@ gulp.task('serve', function () {
   gulp.watch(['app/**/*.html'], reload);
   gulp.watch(['app/styles/**/*.scss'], ['styles:components', 'styles:scss']);
   gulp.watch(['{.tmp,app}/styles/**/*.css'], ['styles:css', reload]);
-  gulp.watch(['app/scripts/**/*.js'], ['jshint']);
+  gulp.watch(['app/scripts/**/*.js'], ['browserify']);
   gulp.watch(['app/images/**/*'], reload);
 });
 
@@ -195,3 +200,31 @@ gulp.task('pagespeed', pagespeed.bind(null, {
 
 // Load custom tasks from the `tasks` directory
 try { require('require-dir')('tasks'); } catch (err) {}
+
+
+// Browserify task
+gulp.task('browserify', function() {
+  // Single point of entry (make sure not to src ALL your files, browserify will figure it out for you)
+  gulp.src(['app/scripts/app.js'])
+  .pipe(browserify({
+    insertGlobals: true,
+    debug: true,
+    // // Only need to shim libraries that are not inherently compatible with Browserify
+    // shim: {
+    //   '$': {
+    //     path: './app/bower/jquery/dist/jquery.min.js',
+    //     exports: 'jQuery'
+    //   },
+    //   angular: {
+    //     path: './app/bower/angular/angular.min.js',
+    //     exports: 'angular'
+    //   }
+    // }
+  }))
+  // Bundle to a single file
+  .pipe(sourcemaps.init())
+  .pipe(concat('index.js'))
+  .pipe(sourcemaps.write())
+  // Output it to our dist folder
+  .pipe(gulp.dest('app'));
+});
