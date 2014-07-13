@@ -36,5 +36,7 @@ require.config({
 // Require all the files needed to create our completed app
 require([
   '../features/home/routes',
-  '../features/home/home'
+  '../features/home/home',
+  '../features/home/join-form',
+  '../features/meeting-service/meeting-service'
 ]);
