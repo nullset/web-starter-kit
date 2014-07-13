@@ -23,20 +23,13 @@ require.config({
   ]
 });
 
-// require( ["test/test", 'angular'],
-//     function() {
-//       console.log(angular)
-//         //This function will be called when all the dependencies
-//         //listed above are loaded. Note that this function could
-//         //be called before the page is loaded.
-//         //This callback is optional.
-//     }
-//   );
 
 // Require all the files needed to create our completed app
 require([
-  '../features/home/routes',
-  '../features/home/home',
-  '../features/home/join-form',
-  '../features/meeting-service/meeting-service'
+  '../features/home/routes'
+  , '../features/home/home'
+  , '../features/home/join-form'
+  , '../features/meeting-service/meeting-service'
+  , '../features/meeting/routes'
+  , '../features/meeting/meeting'
 ]);

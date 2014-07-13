@@ -1,18 +1,19 @@
-(function () {
+define(['app'], function (app) {
+
   'use strict';
 
-  function MeetingCtrl($scope, MeetingService, $stateParams) {
+  app
+    .controller('MeetingCtrl', [
+      '$scope',
+      'MeetingService',
+      '$stateParams',
+      function($scope, MeetingService, $stateParams) {
           MeetingService.get($stateParams.id).then(function(data) {
             $scope.meeting = data;
             console.log($scope.meeting)
           });
-  }
+      }
+    ]);
 
-  // MainCtrl.$inject = ['$scope', 'SomeFactory'];
-  MeetingCtrl.$inject = ['$scope', 'MeetingService', '$stateParams'];
 
-  angular
-    .module('app')
-    .controller('MeetingCtrl', MeetingCtrl);
-
-})();
+});
