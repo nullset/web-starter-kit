@@ -1,0 +1,162 @@
+{
+  "meetingId": "123123123",
+  "meetingType": "impromptu",
+  "organizer": {
+    "firstName": "Nathan",
+    "lastName": "Wright",
+    "email": "nathan.wright@citrix.com",
+    "key": "8593155421246643973",
+    "organizerKey": "8593155421246643973"
+  },
+  "passwordRequired": false,
+  "subject": "Meet Now",
+  "screenSharing": {
+    "sessionId": "9144162479390105364",
+    "sessionSecret": "TeX73OTDDkY=",
+    "attendeeToken": "EEZc3fHhXSkLHpmdHBWEk58=",
+    "commProtocolVersion": 16,
+    "nativeEPVersion": 1468,
+    "stripeMembers": [
+      {
+        "participantId": 1,
+        "servers": [
+          {
+            "ipAddress": "216.115.212.104",
+            "ports": [
+              8200,
+              80,
+              443
+            ],
+            "name": "sjc-l3",
+            "dnsName": "mcs16-1-l3.sjc.expertcity.com"
+          },
+          {
+            "ipAddress": "216.115.214.232",
+            "ports": [
+              8200,
+              80,
+              443
+            ],
+            "name": "sjc-inap",
+            "dnsName": "mcs16-1-inap.sjc.expertcity.com"
+          },
+          {
+            "ipAddress": "67.217.77.105",
+            "ports": [
+              8200,
+              80,
+              443
+            ],
+            "name": "sjc-bgp",
+            "dnsName": "mcs16-1-bgp.sjc.expertcity.com"
+          }
+        ]
+      },
+      {
+        "participantId": 2,
+        "servers": [
+          {
+            "ipAddress": "216.115.214.49",
+            "ports": [
+              8200,
+              80,
+              443
+            ],
+            "name": "sjc-inap",
+            "dnsName": "mcs10-1-inap.sjc.expertcity.com"
+          },
+          {
+            "ipAddress": "67.217.77.29",
+            "ports": [
+              8200,
+              80,
+              443
+            ],
+            "name": "sjc-bgp",
+            "dnsName": "mcs10-1-bgp.sjc.expertcity.com"
+          },
+          {
+            "ipAddress": "216.115.212.51",
+            "ports": [
+              8200,
+              80,
+              443
+            ],
+            "name": "sjc-l3",
+            "dnsName": "mcs10-2-l3.sjc.expertcity.com"
+          }
+        ]
+      }
+    ]
+  },
+  "audio": {
+    "audioType": "voipAndPstn",
+    "accessCode": "126-932-269",
+    "phoneNumbers": [
+      {
+        "country": "US",
+        "displayNumber": "1 877 309 2070",
+        "e164Number": "+18773092070",
+        "tollFree": true
+      },
+      {
+        "country": "US",
+        "displayNumber": "+1 (626) 521-0017",
+        "e164Number": "+16265210017",
+        "tollFree": false
+      }
+    ],
+    "connectionParameters": {
+      "audioPin": 3,
+      "voipTicket": "AAHLOevT15zDdhnOT/SEhRscAAAAAFPAgKsAAAAAU8HSK8hPNlieZmH4A2XblFesYCQsy7z1",
+      "itfBillingId": "6000687008",
+      "voiceConferenceBridge": {
+        "activeSpeakerUpdates": true,
+        "realTimeUpdates": true,
+        "discontinuousTransmission": false,
+        "codecs": [
+          {
+            "payloadType": 103,
+            "frameLength": 30,
+            "samplingRate": 16000,
+            "bitrate": 32000,
+            "name": "ISAC",
+            "channels": 1
+          },
+          {
+            "payloadType": 0,
+            "frameLength": 20,
+            "samplingRate": 8000,
+            "bitrate": 64000,
+            "name": "PCMU",
+            "channels": 1
+          }
+        ],
+        "frontEndProcessors": [
+          {
+            "ipAddress": "10.17.75.18",
+            "ports": [
+              5060
+            ]
+          }
+        ]
+      }
+    },
+    "voiceGateway": {
+      "udpEnabled": true,
+      "servers": [
+        {
+          "ipAddress": "67.217.88.10",
+          "ports": [
+            80,
+            443,
+            8200
+          ],
+          "name": "VGW1_SJC"
+        }
+      ]
+    }
+  },
+  "inSession": true,
+  "rtcgwUrl": "https://rtcgw.citrixonline.com"
+}

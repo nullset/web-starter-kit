@@ -1,18 +1,15 @@
 (function () {
   'use strict';
 
-  function MeetingCtrl($scope, $timeout) {
-    // this.doSometing = function () {
-    //   SomeFactory.doSomething();
-    // };
-    $scope.blah = 'BLAH';
-    $timeout(function() {
-      alert(333)
-    }, 2000)
+  function MeetingCtrl($scope, MeetingService, $stateParams) {
+          MeetingService.get($stateParams.id).then(function(data) {
+            $scope.meeting = data;
+            console.log($scope.meeting)
+          });
   }
 
   // MainCtrl.$inject = ['$scope', 'SomeFactory'];
-  MeetingCtrl.$inject = ['$scope', '$timeout'];
+  MeetingCtrl.$inject = ['$scope', 'MeetingService', '$stateParams'];
 
   angular
     .module('app')

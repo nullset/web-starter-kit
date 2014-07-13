@@ -1,18 +1,10 @@
 (function () {
   'use strict';
 
-  function HomeCtrl($scope, $timeout) {
-    // this.doSometing = function () {
-    //   SomeFactory.doSomething();
-    // };
-    $scope.blah = 'BLAH';
-    $timeout(function() {
-      $scope.isFieldShown = true;
-    }, 2000)
+  function HomeCtrl($scope) {
   }
 
-  // MainCtrl.$inject = ['$scope', 'SomeFactory'];
-  HomeCtrl.$inject = ['$scope', '$timeout'];
+  HomeCtrl.$inject = ['$scope'];
 
   angular
     .module('app')
