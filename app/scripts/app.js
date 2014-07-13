@@ -1,11 +1,7 @@
-define(['jquery/dist/jquery'], function ($) {
-  console.log($('body').length)
+window.name = 'NG_DEFER_BOOTSTRAP!';
 
-    return {
-        getBody: function () {
-            return $('body');
-        }
-    }
+define(['angular', "angular-ui-router"], function () {
+    return angular.module('app',['ui.router']);
 });
 
 // define(function (require, exports, module) {
