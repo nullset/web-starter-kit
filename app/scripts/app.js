@@ -3,11 +3,15 @@
 // https://code.angularjs.org/1.2.1/docs/guide/bootstrap#overview_deferred-bootstrap
 window.name = 'NG_DEFER_BOOTSTRAP!';
 
-define(['angular', "angular-ui-router", '_'], function () {
+define(function(require) {
+  'use strict';
+
+  var angular = require('angular');
+  require('ui.router');
 
   // When angular is ready, bootstrap the app
   angular.element().ready(function() {
-    angular.resumeBootstrap([app['name']]);
+    angular.resumeBootstrap([app.name]);
   });
 
   // Define the app
@@ -18,23 +22,3 @@ define(['angular', "angular-ui-router", '_'], function () {
 
   return app;
 });
-
-// define(function (require, exports, module) {
-//   // var $ = require('$');
-//   // var http = require('plugins/http');
-//   // var router = require('plugins/router');
-
-//   // require('knockout.validation');
-
-
-//   // module.exports = Home;
-// });
-
-
-// (function () {
-//   'use strict';
-
-//   angular
-//   .module('app', ['ui.router']);
-
-// })();

@@ -154,11 +154,16 @@ gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 // Watch Files For Changes & Reload
 gulp.task('serve', function () {
   browserSync({
-    port: 3000,
+    port: 4000,
     open: false,
     notify: false,
     server: {
-      baseDir: ['.tmp', 'app']
+      baseDir: ['.tmp', 'app'],
+      middleware: function (req, res, next) {
+        // console.log("Hi from middleware");
+        next();
+      }
+
     }
   });
 

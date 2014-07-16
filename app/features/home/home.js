@@ -1,6 +1,8 @@
-define(['app'], function (app) {
-
+define(function(require) {
   'use strict';
+
+  var app = require('app');
+  var blah;
 
   app
     .controller('HomeCtrl', [
