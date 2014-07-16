@@ -15,5 +15,6 @@
   "unused": "vars",
   "strict": true,
   "trailing": true,
-  "smarttabs": true
+  "smarttabs": true,
+  "predef" : ["define"]   // Custom globals for requirejs
 }
