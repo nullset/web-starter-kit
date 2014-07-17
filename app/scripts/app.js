@@ -20,5 +20,6 @@ define(function(require) {
       $urlRouterProvider.otherwise('/');
     }]);
 
+  // Returning "app" so it can be used in angular service, controller, filter definitions
   return app;
 });

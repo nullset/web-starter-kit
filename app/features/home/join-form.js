@@ -12,9 +12,9 @@ define(['app'], function (app) {
         $scope.save = function save() {
 
           // console.log($scope.form.meetingId)
-          var errors = [],
-              form = $scope.form,
-              meeting;
+          var errors = [];
+              // form = $scope.form,
+              // meeting;
 
           var meetingId = $scope.form.meetingId.replace(/\D/, '');
           if (meetingId.length > 0) {
@@ -37,14 +37,14 @@ define(['app'], function (app) {
 
               MeetingService.get(meetingId).then(function(data) {
                 $scope.meeting = data;
-                console.log($scope.meeting)
+                console.log($scope.meeting);
                 $state.go('meeting', {id: meetingId});
               });
             } else {
-              alert(errors)
+              alert(errors);
             }
           }
-        }
+        };
 
       }
     ]);

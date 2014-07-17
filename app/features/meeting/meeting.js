@@ -10,7 +10,7 @@ define(['app'], function (app) {
       function($scope, MeetingService, $stateParams) {
           MeetingService.get($stateParams.id).then(function(data) {
             $scope.meeting = data;
-            console.log($scope.meeting)
+            console.log($scope.meeting);
           });
       }
     ]);

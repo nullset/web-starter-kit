@@ -16,5 +16,6 @@
   "strict": true,
   "trailing": true,
   "smarttabs": true,
-  "predef" : ["define"]   // Custom globals for requirejs
+  "predef" : ["define"],   // Custom globals for requirejs
+  "devel": true            // Enable global things like alert, console, etc. May want to change this to false for production builds
 }

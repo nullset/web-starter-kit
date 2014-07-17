@@ -1,9 +1,7 @@
-define(['app'], function (app) {
-
+define(function (require) {
   'use strict';
 
-  angular
-    .module('app')
+    require('app')
     .service('MeetingService', [
       '$http',
       '$q',
@@ -14,20 +12,21 @@ define(['app'], function (app) {
             .success(function(data, status, headers, config) {
               q.resolve(data);
             }).error(function(data, status, headers, config) {
-              alert('error')
+              alert('error');
             });
           return q.promise;
-        }
+        };
 
         // return {
         //   get: function get(meetingId) {
           this.get = function(meetingId) {
             return queryApi(meetingId);
-          }
+          };
         // }
 
       }
     ]);
 
 
+  // return 
 });

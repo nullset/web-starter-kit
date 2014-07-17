@@ -1,13 +1,14 @@
-define(['app'], function (app) {
+define(function(require) {
 
   'use strict';
 
-  app
+
+  require('app')
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
       $stateProvider
       .state('home', {
-        url: "/",
-        templateUrl: "features/home/home.html",
+        url: '/',
+        templateUrl: 'features/home/home.html',
         controller: 'HomeCtrl'
       });
     }]);
