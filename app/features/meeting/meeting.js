@@ -1,8 +1,7 @@
-define(['app'], function (app) {
-
+define(function(require) {
   'use strict';
 
-  app
+  require('app')
     .controller('MeetingCtrl', [
       '$scope',
       'MeetingService',

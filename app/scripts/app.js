@@ -11,12 +11,15 @@ define(function(require) {
 
   // When angular is ready, bootstrap the app
   angular.element().ready(function() {
+    alert(1)
     angular.resumeBootstrap([app.name]);
   });
+
 
   // Define the app
   var app = angular.module('app',['ui.router'])
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+      alert(2)
       $urlRouterProvider.otherwise('/');
     }]);
 

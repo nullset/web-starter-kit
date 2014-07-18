@@ -1,9 +1,7 @@
-define(['app'], function (app) {
-
+define(function(require) {
   'use strict';
 
-  angular
-    .module('app')
+  require('app')
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
       $stateProvider
       .state('meeting', {

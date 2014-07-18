@@ -28,6 +28,8 @@ var browserSync = require('browser-sync');
 var pagespeed = require('psi');
 var reload = browserSync.reload;
 
+ var rjs = require('gulp-requirejs');
+
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
   'ie_mob >= 10',
@@ -42,7 +44,7 @@ var AUTOPREFIXER_BROWSERS = [
 
 // Lint JavaScript
 gulp.task('jshint', function () {
-  return gulp.src('app/scripts/**/*.js')
+  return gulp.src(['app/scripts/**/*.js', 'app/features/**/*.js'])
     .pipe(reload({stream: true, once: true}))
     .pipe($.jshint())
     .pipe($.jshint.reporter('jshint-stylish'))
@@ -115,12 +117,71 @@ gulp.task('styles:scss', function () {
 // Output Final CSS Styles
 gulp.task('styles', ['styles:components', 'styles:scss', 'styles:css']);
 
+gulp.task('requirejsBuild', function() {
+    rjs({
+
+  paths: {
+    'angular': '../bower/angular/angular',
+    'angular-strap': '../bower/angular-strap/dist/angular-strap.min',
+    'angular-strap.tpl': '../bower/angular-strap/dist/angular-strap.tpl.min',
+    'ui.router': '../bower/angular-ui-router/release/angular-ui-router',
+    // 'requirejs': '../bower/requirejs/require',
+    'jquery': '../bower/jquery/dist/jquery',
+    '_': '../bower/lodash/dist/lodash'
+  },
+  shim: {
+    angular: {
+      exports: 'angular'
+    },
+    'ui.router': {
+      deps: [
+        'angular'
+      ]
+    }
+  },      
+        // baseUrl: 'app/scripts',
+        baseUrl: 'app/scripts', 
+        // name: './app/scripts/requirejs.js',
+        name: 'test',
+        out: 'scripts/blah.js',
+        // exclude: [ 'jquery', 'angular']  /// Good for CDN for production
+
+      //   paths: {
+      //   'angular': '../bower/angular/angular',
+      //   'angular-strap': '../bower/angular-strap/dist/angular-strap.min',
+      //   'angular-strap.tpl': '../bower/angular-strap/dist/angular-strap.tpl.min',
+      //   'ui.router': '../bower/angular-ui-router/release/angular-ui-router',
+      //   'requirejs': '../bower/requirejs/require',
+      //   'jquery': '../bower/jquery/dist/jquery',
+      //   '_': '../bower/lodash/dist/lodash'
+      // },
+      // shim: {
+      //   angular: {
+      //     exports: 'angular'
+      //   },
+      //   'ui.router': {
+      //     deps: [
+      //       'angular'
+      //     ]
+      //   }
+      // },
+      // packages: [
+
+      // ]        // ... more require.js options
+  // baseUrl: '.',
+    })
+        .pipe(gulp.dest('./dist/')); // pipe it to the output DIR
+});
+
 // Scan Your HTML For Assets & Optimize Them
 gulp.task('html', function () {
   return gulp.src('app/**/*.html')
     .pipe($.useref.assets({searchPath: '{.tmp,app}'}))
-    // Concatenate And Minify JavaScript
-    .pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
+    // // Concatenate And Minify JavaScript
+    // .pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
+    // // Replaced with requirejsBuild for JS files
+
+
     // Remove Any Unused CSS
     // Note: If not using the Style Guide, you can delete it from
     // the next line to only include styles your project uses.
