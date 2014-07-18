@@ -1,5 +1,5 @@
 requirejs([
-  'app',
+  'scripts/app',
   '../features/home/routes',
   '../features/home/routes',
   '../features/home/home',

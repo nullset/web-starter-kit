@@ -40,14 +40,14 @@ require.config({
 // requirejs(['scripts/app.js', 'features/home/routes.js', 'features/home/home.js', 'features']);
 
 // Require all the files needed to create our completed app
-requirejs([
-  'app',
-  '../features/home/routes',
-  '../features/home/routes',
-  '../features/home/home',
-  '../features/home/join-form',
-  '../features/meeting-service/meeting-service',
-  '../features/meeting/routes',
-  '../features/meeting/meeting',
-]);
+// requirejs([
+//   'app',
+//   '../features/home/routes',
+//   '../features/home/routes',
+//   '../features/home/home',
+//   '../features/home/join-form',
+//   '../features/meeting-service/meeting-service',
+//   '../features/meeting/routes',
+//   '../features/meeting/meeting',
+// ]);
 

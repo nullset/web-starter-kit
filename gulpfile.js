@@ -120,27 +120,27 @@ gulp.task('styles', ['styles:components', 'styles:scss', 'styles:css']);
 gulp.task('requirejsBuild', function() {
     rjs({
 
-  paths: {
-    'angular': '../bower/angular/angular',
-    'angular-strap': '../bower/angular-strap/dist/angular-strap.min',
-    'angular-strap.tpl': '../bower/angular-strap/dist/angular-strap.tpl.min',
-    'ui.router': '../bower/angular-ui-router/release/angular-ui-router',
-    // 'requirejs': '../bower/requirejs/require',
-    'jquery': '../bower/jquery/dist/jquery',
-    '_': '../bower/lodash/dist/lodash'
-  },
-  shim: {
-    angular: {
-      exports: 'angular'
-    },
-    'ui.router': {
-      deps: [
-        'angular'
-      ]
-    }
-  },      
-        // baseUrl: 'app/scripts',
-        baseUrl: 'app/scripts', 
+  // paths: {
+  //   'angular': '../bower/angular/angular',
+  //   'angular-strap': '../bower/angular-strap/dist/angular-strap.min',
+  //   'angular-strap.tpl': '../bower/angular-strap/dist/angular-strap.tpl.min',
+  //   'ui.router': '../bower/angular-ui-router/release/angular-ui-router',
+  //   // 'requirejs': '../bower/requirejs/require',
+  //   'jquery': '../bower/jquery/dist/jquery',
+  //   '_': '../bower/lodash/dist/lodash'
+  // },
+  // shim: {
+  //   angular: {
+  //     exports: 'angular'
+  //   },
+  //   'ui.router': {
+  //     deps: [
+  //       'angular'
+  //     ]
+  //   }
+  // },      
+        baseUrl: 'app/scripts',
+        // baseUrl: '.', 
         // name: './app/scripts/requirejs.js',
         name: 'test',
         out: 'scripts/blah.js',
